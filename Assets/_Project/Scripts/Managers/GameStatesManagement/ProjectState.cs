@@ -4,7 +4,6 @@
     {
         None,
         Boot,
-        Menu,
         Game
     }
 }

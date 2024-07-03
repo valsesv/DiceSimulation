@@ -41,12 +41,14 @@ namespace valsesv._Project.Scripts.UI
         {
             CanvasSwapper.CanvasGroupSwap(canvasGroup, true);
             OnOpen?.Invoke();
+            OnOpen = null;
         }
 
         public virtual void CloseWindow()
         {
             CanvasSwapper.CanvasGroupSwap(canvasGroup, false);
             OnClosed?.Invoke();
+            OnClosed = null;
         }
 
         private void HidePanelInstantly()

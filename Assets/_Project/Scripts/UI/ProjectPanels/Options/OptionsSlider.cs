@@ -24,7 +24,6 @@ namespace valsesv._Project.Scripts.UI.Options
                 switch (sliderType)
                 {
                     case ConfigKey.GameSound:
-                    case ConfigKey.GameMusic:
                         return Mathf.Lerp(valueRange.x, valueRange.y, _sliderValue);
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -33,7 +32,6 @@ namespace valsesv._Project.Scripts.UI.Options
         }
 
         [Inject] private SoundManager _soundManager;
-        [Inject] private MusicManager _musicManager;
 
         public void Init()
         {
@@ -56,9 +54,6 @@ namespace valsesv._Project.Scripts.UI.Options
             {
                 case ConfigKey.GameSound:
                     _soundManager.SetVolume(_sliderValue);
-                    break;
-                case ConfigKey.GameMusic:
-                    _musicManager.SetVolume(_sliderValue);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

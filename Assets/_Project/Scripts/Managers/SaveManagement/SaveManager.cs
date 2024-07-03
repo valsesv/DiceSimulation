@@ -4,8 +4,6 @@ using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using valsesv._Project.Scripts.Interfaces;
-using valsesv._Project.Scripts.Managers.MoneyManagement;
-using Zenject;
 
 namespace valsesv._Project.Scripts.Managers.SaveManagement
 {
@@ -14,8 +12,6 @@ namespace valsesv._Project.Scripts.Managers.SaveManagement
         public SaveData ProgressData { get; private set; } = new();
 
         private string _progressDataSavePath;
-
-        [Inject] private MoneyWallet _moneyWallet;
 
         public void Init()
         {
@@ -27,12 +23,6 @@ namespace valsesv._Project.Scripts.Managers.SaveManagement
         {
             var jsonString = JsonPrettify(ProgressData);
             File.WriteAllText(_progressDataSavePath, jsonString);
-        }
-
-        public void SaveMoney(float amount)
-        {
-            ProgressData.moneyCount = amount;
-            SaveProgressData();
         }
 
         private void CreateSaveFile()
@@ -53,10 +43,7 @@ namespace valsesv._Project.Scripts.Managers.SaveManagement
         {
             if (File.Exists(_progressDataSavePath) == false)
             {
-                ProgressData = new SaveData
-                {
-                    moneyCount = _moneyWallet.MoneyCount
-                };
+                ProgressData = new SaveData();
                 return;
             }
 
@@ -95,7 +82,7 @@ namespace valsesv._Project.Scripts.Managers.SaveManagement
             switch (saveFileType)
             {
                 case SaveFileType.ProgressData:
-                    return Path.Combine(Application.persistentDataPath, saveFileType.ToString());;
+                    return Path.Combine(Application.persistentDataPath, saveFileType.ToString());
                 case SaveFileType.PlayerData:
                     return Path.Combine(Application.streamingAssetsPath, saveFileType.ToString());
                 default:

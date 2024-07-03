@@ -13,6 +13,11 @@ namespace valsesv._Project.Scripts.UI.ProjectPanels
 
         public void Init(){}
 
-        public void OpenPanel(ProjectPanelType targetPanel) => panels[(int) targetPanel].OpenPanel();
+        public UiPanel OpenPanel(ProjectPanelType targetPanel)
+        {
+            var uiPanel = panels[(int)targetPanel];
+            uiPanel.OpenPanel();
+            return uiPanel;
+        }
     }
 }

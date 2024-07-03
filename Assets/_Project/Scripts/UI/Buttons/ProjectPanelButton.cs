@@ -9,6 +9,8 @@ namespace valsesv._Project.Scripts.UI.Buttons
     {
         [SerializeField] private Button button;
         [SerializeField] private ProjectPanelType projectPanelType;
+        [Space(10)]
+        [SerializeField] private CanvasGroup uiToHide;
 
         [Inject] private ProjectPanelsManager _projectPanelsManager;
 
@@ -19,7 +21,22 @@ namespace valsesv._Project.Scripts.UI.Buttons
 
         private void OpenPanel()
         {
-            _projectPanelsManager.OpenPanel(projectPanelType);
+            ShowCurrentUi(false);
+
+            _projectPanelsManager.OpenPanel(projectPanelType).OnClosed += () =>
+            {
+                ShowCurrentUi(true);
+            };
+        }
+
+        private void ShowCurrentUi(bool isShown)
+        {
+            if (uiToHide == null)
+            {
+                return;
+            }
+
+            CanvasSwapper.CanvasGroupSwap(uiToHide, isShown);
         }
     }
 }

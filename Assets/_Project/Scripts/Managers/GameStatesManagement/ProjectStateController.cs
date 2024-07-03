@@ -13,7 +13,6 @@ namespace valsesv._Project.Scripts.Managers.GameStatesManagement
         [Inject] private SceneController _sceneController;
 
         public event Action<ProjectState> OnStateChangedEvent;
-        public event Action OnMenuStateEvent;
         public event Action OnGameStartedEvent;
 
         public bool IsPlaying { get; private set; }
@@ -30,9 +29,6 @@ namespace valsesv._Project.Scripts.Managers.GameStatesManagement
                 _state = value;
                 switch(_state)
                 {
-                    case ProjectState.Menu:
-                        SetMenuState();
-                        break;
                     case ProjectState.Game:
                         SetGameState();
                         break;
@@ -57,14 +53,7 @@ namespace valsesv._Project.Scripts.Managers.GameStatesManagement
 
         private void LoadBootScene()
         {
-            SetState(ProjectState.Menu);
-        }
-
-        private void SetMenuState()
-        {
-            _sceneController.LoadScene(SceneType.Menu);
-            IsPlaying = false;
-            OnMenuStateEvent?.Invoke();
+            SetState(ProjectState.Game);
         }
 
         private void SetGameState()
