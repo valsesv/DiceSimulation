@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7919012026055417374, guid: 8f11ce05e5d594f4a941cb36cfdbc15f, type: 3}
       propertyPath: m_Name
-      value: Play Button
+      value: Throw Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -260,7 +260,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6276875242152303320, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
       propertyPath: m_Name
-      value: Dice Dropdown
+      value: Dice Dropdown 1
       objectReference: {fileID: 0}
     - target: {fileID: 8074904044030226311, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
       propertyPath: m_Pivot.x
@@ -347,6 +347,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
+--- !u!114 &2613083138831385176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1405113139622755311, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
+  m_PrefabInstance: {fileID: 3980196571406481847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5130635456037279280 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8074904044030226311, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
@@ -534,7 +545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6276875242152303320, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
       propertyPath: m_Name
-      value: Dice Dropdown (1)
+      value: Dice Dropdown
       objectReference: {fileID: 0}
     - target: {fileID: 8074904044030226311, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
       propertyPath: m_Pivot.x
@@ -626,6 +637,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8074904044030226311, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
   m_PrefabInstance: {fileID: 4841072859238004412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5787412397049826643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1405113139622755311, guid: c2977fcbd0ba24c7c85296b1b7aca79a, type: 3}
+  m_PrefabInstance: {fileID: 4841072859238004412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6116532934574098338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -789,7 +811,9 @@ MonoBehaviour:
   closeButtons: []
   canvasGroup: {fileID: 3057418441288060135}
   hideOnAwake: 0
-  playButton: {fileID: 2297223335230460066}
+  throwButton: {fileID: 2297223335230460066}
+  dice1Dropdown: {fileID: 2613083138831385176}
+  dice2Dropdown: {fileID: 5787412397049826643}
 --- !u!224 &4659981497902066230 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1461943884079443348, guid: ba289432ccddd4004ad9bf752665612f, type: 3}

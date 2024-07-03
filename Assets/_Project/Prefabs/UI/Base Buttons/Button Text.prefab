@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4366831052722380378, guid: 9f077040b5ba644f6bbb738ce58ce4f4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4844016307143592764, guid: 9f077040b5ba644f6bbb738ce58ce4f4, type: 3}
       propertyPath: m_Sprite
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a8292d7c3170a7348accf3d85c0e7359, type: 3}
     - target: {fileID: 5580813908174643030, guid: 9f077040b5ba644f6bbb738ce58ce4f4, type: 3}
       propertyPath: m_Name
-      value: Button With Text Variant
+      value: Button Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

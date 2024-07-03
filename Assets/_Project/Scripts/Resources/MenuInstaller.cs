@@ -1,9 +1,16 @@
 using UnityEngine;
+using valsesv._Project.Scripts.Core.Dices;
 using Zenject;
 
-public class MenuInstaller : MonoInstaller
+namespace valsesv._Project.Scripts.Resources
 {
-    public override void InstallBindings()
+    public class MenuInstaller : MonoInstaller
     {
+        [SerializeField] private DiceManager diceManager;
+
+        public override void InstallBindings()
+        {
+            Container.Bind<DiceManager>().FromInstance(diceManager).AsSingle();
+        }
     }
 }
