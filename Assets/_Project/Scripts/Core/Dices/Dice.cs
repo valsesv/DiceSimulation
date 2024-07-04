@@ -13,26 +13,33 @@ namespace valsesv._Project.Scripts.Core.Dices
         [SerializeField] private Vector3 rotationFrom;
         [SerializeField] private Vector3 rotationTo;
 
-        public void Throw(int targetValue)
+        public Vector3 TargetTorque { get;  set; }
+        public Vector3 TargetForce { get;  set; }
+
+        public void SetForces()
         {
             SetForce();
             SetRotation();
+        }
+
+        public void Throw()
+        {
+            rigidbody.AddTorque(TargetTorque, ForceMode.Impulse);
+            rigidbody.AddForce(TargetForce, ForceMode.Impulse);
         }
 
         private void SetRotation()
         {
             transform.rotation = startPosition.rotation;
             rigidbody.angularVelocity = Vector3.zero;
-            var targetTorque = MathUtilities.RandomVector(rotationFrom, rotationTo);
-            rigidbody.AddTorque(targetTorque, ForceMode.Impulse);
+            TargetTorque = MathUtilities.RandomVector(rotationFrom, rotationTo);
         }
 
         private void SetForce()
         {
             transform.position = startPosition.position;
             rigidbody.velocity = Vector3.zero;
-            var targetForce = MathUtilities.RandomVector(forceFrom, forceTo);
-            rigidbody.AddForce(targetForce, ForceMode.Impulse);
+            TargetForce = MathUtilities.RandomVector(forceFrom, forceTo);
         }
     }
 }
