@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace valsesv._Project.Scripts.Core.Dices
@@ -16,22 +17,24 @@ namespace valsesv._Project.Scripts.Core.Dices
             IsThrowingEnabled = true;
         }
 
-        public void ThrowDices(int value1, int value2)
+        public void ThrowDices(IReadOnlyList<int> values)
         {
             dice1.SetForces();
             dice2.SetForces();
-            SimulateThrows();
+            RotateToCorrectAngle(values);
             dice1.Throw();
             dice2.Throw();
         }
 
-        private void SimulateThrows()
+        private void RotateToCorrectAngle(IReadOnlyList<int> values)
         {
-            var angles = simulation.GetSimulationAngles(new[]{dice1, dice2});
-            foreach (var angle in angles)
-            {
-                Debug.Log($"Dice angle {angle}");
-            }
+            var simulationValues = simulation.GetSimulationValues(new[]{dice1, dice2});
+            // foreach (var simulationValue in simulationValues)
+            // {
+            //     Debug.Log($"Dice value {simulationValue}");
+            // }
+            dice1.RotateValueFromTo(simulationValues[0], values[0]);
+            dice2.RotateValueFromTo(simulationValues[1], values[1]);
         }
     }
 }

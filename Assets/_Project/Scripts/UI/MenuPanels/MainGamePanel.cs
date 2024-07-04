@@ -22,9 +22,7 @@ namespace valsesv._Project.Scripts.UI.MenuPanels
 
         private void ThrowDices()
         {
-            _diceManager.ThrowDices(dice1Dropdown.value, dice2Dropdown.value);
+            _diceManager.ThrowDices(new[]{dice1Dropdown.value + 1, dice2Dropdown.value + 1});
         }
-
-        private void TryEnableThrowing() => throwButton.enabled = _diceManager.IsThrowingEnabled;
     }
 }

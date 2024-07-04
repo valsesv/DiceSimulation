@@ -1,4 +1,7 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using valsesv._Project.Scripts.Helpers;
 
 namespace valsesv._Project.Scripts.Core.Dices
@@ -12,9 +15,11 @@ namespace valsesv._Project.Scripts.Core.Dices
         [Space(10)]
         [SerializeField] private Vector3 rotationFrom;
         [SerializeField] private Vector3 rotationTo;
+        [Space(10)]
+        [SerializeField] private Transform[] sides;
 
-        public Vector3 TargetTorque { get;  set; }
-        public Vector3 TargetForce { get;  set; }
+        [NonSerialized] public Vector3 TargetTorque;
+        [NonSerialized] public Vector3 TargetForce;
 
         public void SetForces()
         {
@@ -26,6 +31,32 @@ namespace valsesv._Project.Scripts.Core.Dices
         {
             rigidbody.AddTorque(TargetTorque, ForceMode.Impulse);
             rigidbody.AddForce(TargetForce, ForceMode.Impulse);
+        }
+
+        public int GetFaceValue()
+        {
+            var faceValue = 1;
+            var topHeight = -1e9f;
+            for (var i = 0; i < sides.Length; i++)
+            {
+                var sideHeight = sides[i].position.y;
+                if (sideHeight < topHeight)
+                {
+                    continue;
+                }
+                faceValue = i + 1;
+                topHeight = sideHeight;
+            }
+
+            return faceValue;
+        }
+
+        public void RotateValueFromTo(int valueFrom, int valueTo)
+        {
+            var targetUp = sides[valueFrom - 1].position - transform.position;
+            var currentUp = sides[valueTo - 1].position - transform.position;
+            var rotation = Quaternion.FromToRotation(currentUp, targetUp);
+            transform.rotation = rotation * transform.rotation;
         }
 
         private void SetRotation()
